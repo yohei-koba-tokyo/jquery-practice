@@ -28,7 +28,7 @@ $(function() {
         }
       })
       .fail(function() {
-        formSpinner.css('display', 'inline');
+        formSpinner.css('display', 'none');
         alert('Something wrong occured.');
       });
     e.preventDefault();
