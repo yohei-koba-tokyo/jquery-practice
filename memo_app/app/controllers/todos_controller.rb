@@ -6,10 +6,11 @@ class TodosController < ApplicationController
 
   def create
     @todo = Todo.new(todo_params)
-      respond_to do |format|
-        format.json { render json: @message}
-      end
     if @todo.save
+      respond_to do |format|
+        format.html { redierct_to :root }
+        format.json { render json: @todo}
+      end
     else
       render :index, alert: 'Todoを入力してください'
     end
@@ -17,6 +18,6 @@ class TodosController < ApplicationController
 
   private
   def todo_params
-    params.permit(:content)
+    params.require(:todo).permit(:content)
   end
 end
